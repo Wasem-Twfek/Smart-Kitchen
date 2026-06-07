@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Kitchen Meal Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <div class="toast-container">
+        <div id="toast" class="toast" role="status" aria-live="polite" style="display: none;"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <h1><i class="fa fa-utensils"></i> Smart Kitchen Meal Planner</h1>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('index') }}" class="active" aria-label="Home"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="{{ url_for('inventory') }}" aria-label="Inventory"><i class="fa fa-box"></i> Inventory</a></li>
+                    <li><a href="{{ url_for('recipes') }}" aria-label="Recipes"><i class="fa fa-book"></i> Recipes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        {% if expired_items %}
+            <div class="card bg-warning p-3 my-3" aria-label="Expired Items Warning">
+                <i class="fa fa-exclamation-triangle"></i>
+                <b>Warning:</b> The following items are expired and were excluded from planning:
+                <ul>
+                {% for item in expired_items %}
+                    <li>{{ item.name }} ({{ item.quantity }} {{ item.unit }}, expired {{ item.expiry_date }})</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <script>showToast("{{ message }}");</script>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="card" id="main-form" aria-label="Meal Planning Form" {% if show_results %}style="display:none;"{% endif %}>
+            <form method="post">
+                <div class="form-group">
+                    <label class="form-label"><i class="fa fa-snowflake"></i> Select fridges:</label>
+                    <div class="d-flex flex-wrap">
+                        {% for fid in fridge_ids %}
+                            <div class="p-2">
+                                <input type="checkbox" id="fridge_{{ fid }}" name="fridges" value="{{ fid }}" aria-label="Fridge {{ fid }}" {% if fid in selected_fridges %}checked{% endif %}>
+                                <label for="fridge_{{ fid }}">{{ fid }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="servings"><i class="fa fa-users"></i> Number of servings:</label>
+                    <input type="number" id="servings" class="form-control" name="servings" value="{{ servings }}" min="1" required aria-label="Number of servings">
+                </div>
+                
+                <div class="d-flex">
+                    <button type="submit" name="action" value="recommend" class="btn btn-primary">
+                        <i class="fa fa-lightbulb"></i> Get Recommendation
+                    </button>
+                    
+                    {% if result and result.missing_ingredients %}
+                        <button type="submit" name="action" value="save_order" class="btn btn-success mx-2">
+                            <i class="fa fa-save"></i> Save Shopping List
+                        </button>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+
+        <div id="results-section" {% if not show_results %}style="display:none;"{% endif %}>
+            {% if result %}
+                {% if result.error %}
+                    <div class="card bg-danger p-3" aria-label="Error Message">
+                        <i class="fa fa-exclamation-triangle"></i> Error: {{ result.error }}
+                    </div>
+                {% elif result.recipe %}
+                    <div class="card">
+                        <h2><i class="fa fa-lightbulb"></i> Recommended recipe: {{ result.recipe.name }}</h2>
+                        
+                        <div class="row my-3">
+                            <div class="col-md-6">
+                                <h3><i class="fa fa-list"></i> Ingredients:</h3>
+                                <ul>
+                                {% for ing in result.recipe.ingredients %}
+                                    {% set missing = false %}
+                                    {% for miss in result.missing_ingredients %}
+                                        {% if miss.name == ing.name and miss.unit == ing.unit %}
+                                            {% set missing = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <li class="{% if missing %}ingredient-missing{% else %}ingredient-available{% endif %}">
+                                        {{ ing.name }}: {{ ing.quantity }} {{ ing.unit }}
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h3><i class="fa fa-utensils"></i> Utensils:</h3>
+                                <ul>
+                                {% for u in result.recipe.utensils %}
+                                    <li>{{ u }}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        {% if result.missing_ingredients or result.missing_utensils %}
+                            <div class="card bg-light p-3 my-3">
+                                <h3><i class="fa fa-shopping-cart"></i> Missing items:</h3>
+                                
+                                {% if result.missing_ingredients %}
+                                    <h4>Ingredients:</h4>
+                                    <ul id="shopping-list">
+                                    {% for item in result.missing_ingredients %}
+                                        <li class="inventory-item">
+                                            <div class="d-flex align-items-center">
+                                                <input type="checkbox" id="item-{{ loop.index }}" aria-label="Mark as bought">
+                                                <label for="item-{{ loop.index }}" class="ingredient-missing mx-2">
+                                                    {{ item.name }}: {{ item.quantity }} {{ item.unit }}
+                                                </label>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                
+                                {% if result.missing_utensils %}
+                                    <h4>Utensils:</h4>
+                                    <ul>
+                                    {% for u in result.missing_utensils %}
+                                        <li>{{ u }}</li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        
+                        {% if recipe_details %}
+                            <button class="btn btn-outline my-2" onclick="toggleDetails()" type="button" aria-label="Show or hide recipe details">
+                                <i class="fa fa-info-circle"></i> Show/Hide Recipe Details
+                            </button>
+                            
+                            <div class="card p-3 my-2" id="details" style="display:none;">
+                                <h4>Recipe Steps:</h4>
+                                <ol>
+                                {% for step in recipe_details.steps %}
+                                    <li>{{ step }}</li>
+                                {% endfor %}
+                                </ol>
+                                
+                                {% if recipe_details.if_then_rules %}
+                                    <h4>IF–THEN Rules:</h4>
+                                    <ul>
+                                    {% for rule in recipe_details.if_then_rules %}
+                                        <li><b>If</b> {{ rule.if }}, <b>then</b> {{ rule.then }}</li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                
+                                {% if recipe_details.ingredients %}
+                                    <h4>Detected Ingredients:</h4>
+                                    <div class="d-flex flex-wrap">
+                                    {% for ing in recipe_details.ingredients %}
+                                        <span class="tag p-1 my-1 mx-2">{{ ing }}</span>
+                                    {% endfor %}
+                                    </div>
+                                {% endif %}
+                                
+                                {% if recipe_details.actions %}
+                                    <h4>Detected Actions:</h4>
+                                    <div class="d-flex flex-wrap">
+                                    {% for act in recipe_details.actions %}
+                                        <span class="tag p-1 my-1 mx-2">{{ act }}</span>
+                                    {% endfor %}
+                                    </div>
+                                {% endif %}
+                                
+                                {% if recipe_details.contradictions %}
+                                    <div class="bg-danger p-3 my-2" aria-label="Contradictions Detected">
+                                        <i class="fa fa-exclamation-triangle"></i>
+                                        <b>Contradictions detected in recipe:</b>
+                                        <ul>
+                                        {% for c in recipe_details.contradictions %}
+                                            <li>{{ c }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        
+                        <button onclick="planAnotherMeal()" class="btn btn-outline" type="button" aria-label="Plan another meal">
+                            <i class="fa fa-arrow-left"></i> Plan Another Meal
+                        </button>
+                    </div>
+                {% else %}
+                    <div class="card">
+                        <p>No suitable recipe found for the selected fridges and servings.</p>
+                        <button onclick="planAnotherMeal()" class="btn btn-outline" type="button">
+                            <i class="fa fa-arrow-left"></i> Try Again
+                        </button>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% if show_results %}
+    <script>
+        // Show results section when needed
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('results-section').style.display = 'block';
+            document.getElementById('main-form').style.display = 'none';
+        });
+    </script>
+    {% endif %}
+</body>
+</html> 

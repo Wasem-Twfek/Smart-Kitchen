@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - Smart Kitchen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <div class="toast-container">
+        <div id="toast" class="toast" role="status" aria-live="polite" style="display: none;"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <h1><i class="fa fa-utensils"></i> Smart Kitchen</h1>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('index') }}" aria-label="Home"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="{{ url_for('inventory') }}" aria-label="Inventory"><i class="fa fa-box"></i> Inventory</a></li>
+                    <li><a href="{{ url_for('recipes') }}" class="active" aria-label="Recipes"><i class="fa fa-book"></i> Recipes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filters my-4">
+            <h2><i class="fa fa-filter"></i> Filter Recipes</h2>
+            <form class="filter-form" id="recipeFilterForm">
+                <div class="form-group">
+                    <label for="search" class="form-label">Search</label>
+                    <input type="text" id="search" name="search" class="form-control" placeholder="Search recipe name or ingredients">
+                </div>
+                <div class="form-group">
+                    <label for="dietary" class="form-label">Dietary Preferences</label>
+                    <select id="dietary" name="dietary" class="form-control">
+                        <option value="">All</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sort" class="form-label">Sort By</label>
+                    <select id="sort" name="sort" class="form-control">
+                        <option value="name">Name (A-Z)</option>
+                        <option value="ingredients">Fewest Ingredients</option>
+                        <option value="missing">Fewest Missing Ingredients</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Apply Filters</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            {% for recipe in recipes %}
+            <div class="col-md-4 col-lg-3 mb-4 recipe-container">
+                <div class="card recipe-card">
+                    <img src="{{ url_for('static', filename='images/recipes/' + recipe.image) if recipe.image else url_for('static', filename='images/recipe-placeholder.jpg') }}" alt="{{ recipe.name }}">
+                    <div class="recipe-card-body">
+                        <h3 class="recipe-card-title">{{ recipe.name }}</h3>
+                        <p class="recipe-card-text">
+                            {{ recipe.description|truncate(100) if recipe.description else "A delicious recipe with " ~ recipe.ingredients|length ~ " ingredients." }}
+                        </p>
+                        <div class="d-flex flex-wrap">
+                            {% if recipe.tags %}
+                                {% for tag in recipe.tags %}
+                                    <span class="tag tag-{{ tag }}">{{ tag }}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="recipe-footer">
+                            <small>{{ recipe.ingredients|length }} ingredients</small>
+                            <a href="{{ url_for('recipe_details', recipe_id=recipe.id) }}" class="btn btn-sm btn-outline">View Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if not recipes %}
+            <div class="col-12 text-center p-4">
+                <h3><i class="fa fa-info-circle"></i> No recipes found</h3>
+                <p>Try adjusting your filters or adding new recipes.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('recipeFilterForm');
+            const recipeContainers = document.querySelectorAll('.recipe-container');
+            const searchInput = document.getElementById('search');
+            const dietarySelect = document.getElementById('dietary');
+            const sortSelect = document.getElementById('sort');
+            
+            // Simple client-side filtering
+            function filterRecipes() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const dietaryFilter = dietarySelect.value;
+                
+                recipeContainers.forEach(container => {
+                    const recipeTitle = container.querySelector('.recipe-card-title').textContent.toLowerCase();
+                    const recipeTags = Array.from(container.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                    
+                    let showRecipe = true;
+                    
+                    // Search filter
+                    if (searchTerm && !recipeTitle.includes(searchTerm)) {
+                        showRecipe = false;
+                    }
+                    
+                    // Dietary filter
+                    if (dietaryFilter && !recipeTags.includes(dietaryFilter)) {
+                        showRecipe = false;
+                    }
+                    
+                    container.style.display = showRecipe ? 'block' : 'none';
+                });
+            }
+            
+            // Filter on input change
+            searchInput.addEventListener('input', filterRecipes);
+            dietarySelect.addEventListener('change', filterRecipes);
+            
+            // Prevent form submission (we're doing client-side filtering)
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                filterRecipes();
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,1846 @@
+[
+  {
+    "title": "Pasta Salad",
+    "description": "A fresh and light pasta salad perfect for summer picnics and gatherings. This vibrant dish combines al dente pasta with crisp vegetables and a simple olive oil dressing.",
+    "steps": [
+      "Bring a large pot of salted water to a boil.",
+      "Add pasta and cook according to package instructions until al dente, usually 8-10 minutes.",
+      "Drain pasta and rinse under cold water to stop the cooking process.",
+      "While pasta cools, wash and chop the tomatoes into bite-sized pieces.",
+      "Wash and chop the lettuce into thin strips.",
+      "In a large bowl, combine the cooled pasta, chopped tomatoes, and lettuce.",
+      "Drizzle olive oil over the salad and toss gently to combine.",
+      "Season with salt and pepper to taste.",
+      "For best flavor, refrigerate for at least 30 minutes before serving."
+    ],
+    "if_then_rules": [
+      {
+        "if": "you want it spicy",
+        "then": "add a pinch of red pepper flakes or fresh chopped chili"
+      },
+      {
+        "if": "it looks dry",
+        "then": "add an extra tablespoon of olive oil"
+      },
+      {
+        "if": "you want extra flavor",
+        "then": "add fresh herbs like basil or parsley"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "pasta",
+        "quantity": 200,
+        "unit": "grams"
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "lettuce",
+        "quantity": 1,
+        "unit": "head"
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "name": "salt",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "prep_time": "30 minutes",
+    "servings": "4 servings",
+    "tags": [
+      "vegetarian",
+      "cold dish",
+      "summer"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board",
+      "pot",
+      "colander"
+    ],
+    "notes": "This versatile salad can be customized with additional ingredients like cucumber, bell peppers, olives, or feta cheese. For a more substantial meal, add canned tuna or grilled chicken."
+  },
+  {
+    "title": "Cheese Omelette",
+    "description": "A classic breakfast dish that's quick to prepare and packed with protein. This fluffy omelette filled with melted cheese is perfect for a satisfying morning meal.",
+    "steps": [
+      "Crack eggs into a bowl and beat them until well mixed.",
+      "Add a splash of milk and whisk to incorporate. This helps make the omelette fluffy.",
+      "Grate the cheese if it's not already shredded.",
+      "Season the egg mixture with salt and pepper.",
+      "Heat a non-stick frying pan over medium heat.",
+      "Add a small knob of butter and let it melt, coating the bottom of the pan.",
+      "Pour in the egg mixture and let it cook for about 1 minute until it starts to set at the edges.",
+      "Sprinkle the cheese evenly over one half of the omelette.",
+      "When the eggs are mostly set but still slightly runny on top, use a spatula to fold the omelette in half.",
+      "Cook for another 30 seconds, then slide onto a plate and serve immediately."
+    ],
+    "if_then_rules": [
+      {
+        "if": "it sticks to the pan",
+        "then": "add more butter or use a non-stick pan"
+      },
+      {
+        "if": "you want a fluffier omelette",
+        "then": "whisk the eggs vigorously before cooking"
+      },
+      {
+        "if": "you like herbs",
+        "then": "add chopped chives or parsley to the egg mixture"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "cheese",
+        "quantity": 50,
+        "unit": "grams"
+      },
+      {
+        "name": "milk",
+        "quantity": 50,
+        "unit": "ml"
+      },
+      {
+        "name": "butter",
+        "quantity": 10,
+        "unit": "grams"
+      },
+      {
+        "name": "salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "prep_time": "10 minutes",
+    "servings": "1 serving",
+    "tags": [
+      "vegetarian",
+      "breakfast",
+      "quick"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "bowl",
+      "whisk",
+      "grater"
+    ],
+    "notes": "For variation, try different types of cheese like cheddar, feta, or goat cheese. You can also add vegetables like spinach, mushrooms, or tomatoes."
+  },
+  {
+    "title": "Chicken Stir Fry",
+    "description": "A quick and healthy meal full of lean protein and vegetables. This versatile stir fry combines tender chicken with fresh vegetables and can be ready in under 30 minutes.",
+    "steps": [
+      "Slice the chicken breast into thin strips against the grain.",
+      "Season the chicken with salt and pepper.",
+      "Heat a wok or large frying pan over high heat until very hot.",
+      "Add 1 tablespoon of oil and swirl to coat the pan.",
+      "Add the chicken pieces and stir fry for 3-4 minutes until they begin to brown.",
+      "Remove the chicken and set aside.",
+      "Add remaining oil and the vegetables to the pan, stir frying for 2-3 minutes until crisp-tender.",
+      "Return the chicken to the pan and toss everything together.",
+      "Add soy sauce and any seasonings, then stir fry for another minute until everything is hot.",
+      "Serve immediately with cooked rice."
+    ],
+    "if_then_rules": [
+      {
+        "if": "the pan gets too dry",
+        "then": "add a tablespoon of water or chicken broth"
+      },
+      {
+        "if": "you want more sauce",
+        "then": "mix 1 tablespoon cornstarch with 1/4 cup broth and add to the pan"
+      },
+      {
+        "if": "you want it spicy",
+        "then": "add red pepper flakes or a drizzle of sriracha sauce"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 1,
+        "unit": "pcs"
+      },
+      {
+        "name": "rice",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "lettuce",
+        "quantity": 0.5,
+        "unit": "head"
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 1,
+        "unit": "pcs"
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "name": "vegetable oil",
+        "quantity": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "prep_time": "25 minutes",
+    "servings": "2 servings",
+    "tags": [
+      "high-protein",
+      "dinner",
+      "quick"
+    ],
+    "utensils": [
+      "wok or frying pan",
+      "knife",
+      "cutting board",
+      "wooden spoon"
+    ],
+    "notes": "You can substitute the chicken with beef, shrimp, or tofu for variety. This recipe works with any combination of vegetables you have available."
+  },
+  {
+    "title": "Simple Rice",
+    "description": "Perfect, fluffy rice every time. This basic recipe is the foundation for countless meals and can be enhanced with herbs, spices, or broths to match any cuisine.",
+    "steps": [
+      "Rinse the rice in cold water until the water runs clear, about 1-2 minutes.",
+      "Place the rice in a pot with 1.5 cups of water for every cup of rice.",
+      "Add a pinch of salt and bring to a boil over high heat.",
+      "Once boiling, reduce heat to low, cover with a tight-fitting lid, and simmer for 15 minutes.",
+      "Without removing the lid, remove from heat and let the rice rest for 5 minutes.",
+      "Fluff the rice with a fork before serving."
+    ],
+    "if_then_rules": [
+      {
+        "if": "the water evaporates before rice is soft",
+        "then": "add another 1/4 cup of water and continue cooking on low heat"
+      },
+      {
+        "if": "you want more flavorful rice",
+        "then": "use chicken or vegetable broth instead of water"
+      },
+      {
+        "if": "you want fluffy separated grains",
+        "then": "rinse the rice thoroughly before cooking and avoid stirring during cooking"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "rice",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "water",
+        "quantity": 150,
+        "unit": "ml"
+      },
+      {
+        "name": "salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "prep_time": "20 minutes",
+    "servings": "1 serving",
+    "tags": [
+      "basic",
+      "side dish",
+      "gluten-free"
+    ],
+    "utensils": [
+      "pot with lid",
+      "measuring cup",
+      "fork"
+    ],
+    "notes": "Different rice varieties may require different water ratios and cooking times. Brown rice typically needs more water and a longer cooking time than white rice."
+  },
+  {
+    "title": "Pancake Breakfast",
+    "description": "Light and fluffy homemade pancakes that make for a delicious weekend breakfast. Serve these golden pancakes warm with maple syrup, fresh fruit, or your favorite toppings.",
+    "steps": [
+      "In a large bowl, whisk together the flour, sugar, baking powder, and salt.",
+      "In another bowl, beat the eggs, then add milk and melted butter.",
+      "Pour the wet ingredients into the dry ingredients and mix until just combined. Some lumps are okay.",
+      "Let the batter rest for 5 minutes to allow the gluten to relax.",
+      "Heat a non-stick frying pan or griddle over medium heat.",
+      "Add a small amount of butter or oil to coat the cooking surface.",
+      "Pour about 1/4 cup of batter for each pancake onto the hot pan.",
+      "Cook until bubbles form on the surface and the edges look set, about 2-3 minutes.",
+      "Flip the pancake and cook for another 1-2 minutes until golden brown.",
+      "Repeat with remaining batter, adding more butter to the pan as needed."
+    ],
+    "if_then_rules": [
+      {
+        "if": "the pancakes are too thick",
+        "then": "add a little more milk to thin the batter"
+      },
+      {
+        "if": "the pancakes are browning too quickly",
+        "then": "reduce the heat to medium-low"
+      },
+      {
+        "if": "you want fluffier pancakes",
+        "then": "let the batter rest for 10-15 minutes before cooking"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "flour",
+        "quantity": 200,
+        "unit": "grams"
+      },
+      {
+        "name": "milk",
+        "quantity": 300,
+        "unit": "ml"
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "sugar",
+        "quantity": 30,
+        "unit": "grams"
+      },
+      {
+        "name": "butter",
+        "quantity": 20,
+        "unit": "grams"
+      },
+      {
+        "name": "baking powder",
+        "quantity": 2,
+        "unit": "tsp"
+      },
+      {
+        "name": "salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "prep_time": "25 minutes",
+    "servings": "4 servings",
+    "tags": [
+      "breakfast",
+      "vegetarian",
+      "weekend"
+    ],
+    "utensils": [
+      "bowl",
+      "whisk",
+      "frying pan",
+      "spatula",
+      "measuring cups"
+    ],
+    "notes": "For added flavor, try adding vanilla extract, cinnamon, or blueberries to the batter. Leftover pancakes can be frozen with parchment paper between them and reheated in a toaster."
+  },
+  {
+    "title": "Party Nachos",
+    "description": "Loaded nachos that are perfect for gatherings and game days. Crispy tortilla chips topped with melted cheese and jalape\u00f1os make for an irresistible shareable snack.",
+    "steps": [
+      "Preheat the oven to 375\u00b0F (190\u00b0C).",
+      "Spread the tortilla chips in an even layer on a large baking sheet.",
+      "Sprinkle two-thirds of the grated cheese evenly over the chips.",
+      "Slice the jalape\u00f1os into thin rounds, removing seeds if you prefer less heat.",
+      "Distribute the jalape\u00f1o slices over the cheese.",
+      "Sprinkle the remaining cheese on top.",
+      "Bake in the preheated oven for 5-7 minutes, until the cheese is fully melted and bubbly.",
+      "Remove from the oven and let cool for 1 minute.",
+      "Serve immediately with salsa, guacamole, and sour cream on the side."
+    ],
+    "if_then_rules": [
+      {
+        "if": "you want extra crispy nachos",
+        "then": "bake the chips for 2 minutes before adding toppings"
+      },
+      {
+        "if": "you want a more substantial appetizer",
+        "then": "add cooked ground beef or black beans before the cheese"
+      },
+      {
+        "if": "the cheese isn't melting evenly",
+        "then": "place under the broiler for 1-2 minutes, watching carefully"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "tortilla chips",
+        "quantity": 250,
+        "unit": "grams"
+      },
+      {
+        "name": "cheese",
+        "quantity": 150,
+        "unit": "grams"
+      },
+      {
+        "name": "jalapeno",
+        "quantity": 1,
+        "unit": "pcs"
+      },
+      {
+        "name": "salsa",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "sour cream",
+        "quantity": 50,
+        "unit": "grams"
+      },
+      {
+        "name": "guacamole",
+        "quantity": 100,
+        "unit": "grams"
+      }
+    ],
+    "prep_time": "15 minutes",
+    "servings": "6 servings",
+    "tags": [
+      "appetizer",
+      "party food",
+      "quick"
+    ],
+    "utensils": [
+      "baking tray",
+      "oven",
+      "knife",
+      "grater",
+      "serving bowl"
+    ],
+    "notes": "For extra flavor, consider adding black olives, green onions, or diced tomatoes after baking. These nachos are best enjoyed immediately, as they can become soggy if left too long."
+  },
+  {
+    "title": "Vegetable Soup",
+    "description": "A nourishing vegetable soup that's both healthy and comforting. This simple soup is packed with fresh vegetables and can be customized based on what's in your fridge.",
+    "steps": [
+      "Heat 2 tablespoons of olive oil in a large pot over medium heat.",
+      "Dice the onion and add to the pot, cooking until translucent, about 5 minutes.",
+      "Peel and dice the carrots and add to the pot, cooking for 3 minutes.",
+      "Dice the celery and add to the pot, cooking for another 2 minutes.",
+      "Peel and dice the potatoes into 1/2-inch cubes.",
+      "Add the potatoes and stir to combine with the other vegetables.",
+      "Pour in the water or vegetable broth and bring to a boil.",
+      "Season with salt, pepper, and herbs like thyme or bay leaf.",
+      "Reduce heat to low, cover, and simmer for 20-25 minutes until all vegetables are tender.",
+      "Taste and adjust seasoning before serving hot."
+    ],
+    "if_then_rules": [
+      {
+        "if": "you want a thicker soup",
+        "then": "blend one-third of the soup and return it to the pot"
+      },
+      {
+        "if": "you want more protein",
+        "then": "add a can of white beans or cooked chicken"
+      },
+      {
+        "if": "the soup is too bland",
+        "then": "add more herbs, a splash of vinegar, or a parmesan rind while simmering"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "carrot",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "potato",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": "pcs"
+      },
+      {
+        "name": "celery",
+        "quantity": 2,
+        "unit": "stalks"
+      },
+      {
+        "name": "water",
+        "quantity": 1,
+        "unit": "liter"
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "name": "salt",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "name": "dried herbs",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "prep_time": "45 minutes",
+    "servings": "4 servings",
+    "tags": [
+      "vegetarian",
+      "healthy",
+      "winter"
+    ],
+    "utensils": [
+      "large pot",
+      "knife",
+      "cutting board",
+      "ladle",
+      "vegetable peeler"
+    ],
+    "notes": "This soup freezes well for up to 3 months. For variations, try adding different vegetables like zucchini, green beans, or spinach. A squeeze of lemon juice just before serving brightens the flavors."
+  },
+  {
+    "title": "Club Sandwich",
+    "description": "A classic triple-decker sandwich that's perfect for lunch or a light dinner. Layers of toasted bread, chicken, bacon, lettuce, and tomato create the ultimate satisfying sandwich.",
+    "steps": [
+      "Cook the chicken breast in a pan over medium heat until fully cooked through, about 6-7 minutes per side.",
+      "Let the chicken rest for 5 minutes, then slice thinly.",
+      "Toast 6 slices of bread until golden brown.",
+      "Spread mayonnaise on one side of each piece of toast.",
+      "Place lettuce and sliced tomato on the first piece of toast.",
+      "Add the sliced chicken breast on top of the tomato.",
+      "Place the second piece of toast on top, mayonnaise side up.",
+      "Add bacon and more lettuce on the second layer.",
+      "Top with the final piece of toast, mayonnaise side down.",
+      "Secure the sandwich with toothpicks and cut diagonally into quarters to serve."
+    ],
+    "if_then_rules": [
+      {
+        "if": "you want a lighter version",
+        "then": "use Greek yogurt instead of mayonnaise and turkey bacon instead of regular bacon"
+      },
+      {
+        "if": "you prefer a vegetarian option",
+        "then": "substitute the chicken and bacon with sliced avocado and grilled mushrooms"
+      },
+      {
+        "if": "the sandwich is too tall to eat",
+        "then": "press down gently after assembly and before cutting"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "bread",
+        "quantity": 6,
+        "unit": "slices"
+      },
+      {
+        "name": "chicken breast",
+        "quantity": 1,
+        "unit": "pcs"
+      },
+      {
+        "name": "lettuce",
+        "quantity": 2,
+        "unit": "leaves"
+      },
+      {
+        "name": "tomato",
+        "quantity": 1,
+        "unit": "pcs"
+      },
+      {
+        "name": "mayonnaise",
+        "quantity": 30,
+        "unit": "grams"
+      },
+      {
+        "name": "bacon",
+        "quantity": 4,
+        "unit": "slices"
+      },
+      {
+        "name": "salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "prep_time": "20 minutes",
+    "servings": "2 servings",
+    "tags": [
+      "lunch",
+      "sandwich",
+      "high-protein"
+    ],
+    "utensils": [
+      "frying pan",
+      "knife",
+      "cutting board",
+      "toaster",
+      "toothpicks"
+    ],
+    "notes": "For extra flavor, add a slice of cheese or avocado. The chicken can be prepared ahead of time and refrigerated for quicker assembly. Serve with potato chips or a side salad for a complete meal."
+  },
+  {
+    "title": "Spaghetti Bolognese",
+    "description": "A classic Italian comfort food featuring al dente spaghetti topped with a rich, meaty tomato sauce. This hearty dish is a family favorite that's perfect for weeknight dinners.",
+    "steps": [
+      "Heat olive oil in a large pan over medium heat.",
+      "Add finely chopped onion and cook until translucent, about 5 minutes.",
+      "Add minced garlic and cook for another minute until fragrant.",
+      "Add ground beef and break it apart with a wooden spoon, cooking until browned.",
+      "Pour in tomato sauce and stir to combine.",
+      "Season with salt, pepper, and Italian herbs.",
+      "Reduce heat to low and simmer for 20-30 minutes, stirring occasionally.",
+      "Meanwhile, bring a large pot of salted water to a boil.",
+      "Cook spaghetti according to package instructions until al dente.",
+      "Drain pasta and serve topped with the Bolognese sauce and grated Parmesan."
+    ],
+    "if_then_rules": [
+      {
+        "if": "the sauce is too thick",
+        "then": "add a splash of water or beef broth"
+      },
+      {
+        "if": "you want a richer flavor",
+        "then": "add a splash of red wine after browning the meat"
+      },
+      {
+        "if": "you want a vegetarian option",
+        "then": "substitute the ground beef with lentils or plant-based meat alternative"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "spaghetti",
+        "quantity": 300,
+        "unit": "grams"
+      },
+      {
+        "name": "ground beef",
+        "quantity": 250,
+        "unit": "grams"
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 200,
+        "unit": "ml"
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": "pcs"
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves"
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "name": "Italian herbs",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "name": "salt",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "name": "Parmesan cheese",
+        "quantity": 50,
+        "unit": "grams"
+      }
+    ],
+    "prep_time": "40 minutes",
+    "servings": "4 servings",
+    "tags": [
+      "Italian",
+      "dinner",
+      "family meal"
+    ],
+    "utensils": [
+      "large pot",
+      "frying pan",
+      "wooden spoon",
+      "colander",
+      "grater"
+    ],
+    "notes": "For an authentic touch, add a bay leaf to the sauce while simmering and remove before serving. The sauce can be made ahead of time and will taste even better the next day."
+  },
+  {
+    "title": "Fruit Salad",
+    "description": "A refreshing and colorful mix of fresh fruits that makes for a healthy dessert or breakfast option. This simple dish brings together the natural sweetness of seasonal fruits in one delightful bowl.",
+    "steps": [
+      "Wash all fruits thoroughly under cold running water.",
+      "Peel and core the apple, then cut into bite-sized chunks.",
+      "Peel the banana and slice into rounds.",
+      "Peel the orange, remove the white pith, and separate into segments or chunks.",
+      "Cut the grapes in half if they are large.",
+      "Combine all prepared fruits in a large bowl.",
+      "If desired, add a squeeze of lemon juice to prevent browning and add brightness.",
+      "Gently toss to mix all fruits together.",
+      "Cover and refrigerate for at least 30 minutes before serving for the flavors to blend."
+    ],
+    "if_then_rules": [
+      {
+        "if": "you want it sweeter",
+        "then": "add a drizzle of honey or maple syrup"
+      },
+      {
+        "if": "the fruit is not very ripe",
+        "then": "let it sit at room temperature before preparing"
+      },
+      {
+        "if": "you want more flavor",
+        "then": "add a sprinkle of cinnamon or mint leaves"
+      }
+    ],
+    "ingredients": [
+      {
+        "name": "apple",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "banana",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "orange",
+        "quantity": 2,
+        "unit": "pcs"
+      },
+      {
+        "name": "grapes",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "lemon juice",
+        "quantity": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "prep_time": "15 minutes",
+    "servings": "4 servings",
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "healthy",
+      "dessert",
+      "breakfast"
+    ],
+    "utensils": [
+      "knife",
+      "cutting board",
+      "peeler",
+      "large bowl"
+    ],
+    "notes": "This is a very flexible recipe. Feel free to use whatever fruits are in season or that you have on hand. For a more substantial breakfast, serve with yogurt and granola."
+  },
+  {
+    "title": "Vegetarian Chili",
+    "description": "A delicious vegetarian chili recipe.",
+    "steps": [
+      "Prepare the vegetarian chili according to your preference."
+    ],
+    "ingredients": [
+      "kidney beans",
+      "tomato",
+      "onion",
+      "bell pepper",
+      "chili powder"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 4,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Greek Salad",
+    "description": "A delicious greek salad recipe.",
+    "steps": [
+      "Prepare the greek salad according to your preference."
+    ],
+    "ingredients": [
+      "cucumber",
+      "tomato",
+      "feta cheese",
+      "olive oil",
+      "olives"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Beef Tacos",
+    "description": "A delicious beef tacos recipe.",
+    "steps": [
+      "Prepare the beef tacos according to your preference."
+    ],
+    "ingredients": [
+      "ground beef",
+      "taco shells",
+      "lettuce",
+      "cheese",
+      "salsa"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "bowl"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Vegan Buddha Bowl",
+    "description": "A delicious vegan buddha bowl recipe.",
+    "steps": [
+      "Prepare the vegan buddha bowl according to your preference."
+    ],
+    "ingredients": [
+      "quinoa",
+      "chickpeas",
+      "spinach",
+      "carrot",
+      "avocado"
+    ],
+    "utensils": [
+      "bowl",
+      "pot",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Fish and Chips",
+    "description": "A delicious fish and chips recipe.",
+    "steps": [
+      "Prepare the fish and chips according to your preference."
+    ],
+    "ingredients": [
+      "white fish fillet",
+      "potato",
+      "flour",
+      "oil"
+    ],
+    "utensils": [
+      "frying pan",
+      "knife",
+      "cutting board",
+      "bowl"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Egg Fried Rice",
+    "description": "A delicious egg fried rice recipe.",
+    "steps": [
+      "Prepare the egg fried rice according to your preference."
+    ],
+    "ingredients": [
+      "rice",
+      "eggs",
+      "carrot",
+      "peas",
+      "soy sauce"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "bowl"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Shakshuka",
+    "description": "A delicious shakshuka recipe.",
+    "steps": [
+      "Prepare the shakshuka according to your preference."
+    ],
+    "ingredients": [
+      "eggs",
+      "tomato",
+      "onion",
+      "bell pepper",
+      "olive oil"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Lentil Soup",
+    "description": "A delicious lentil soup recipe.",
+    "steps": [
+      "Prepare the lentil soup according to your preference."
+    ],
+    "ingredients": [
+      "lentils",
+      "carrot",
+      "onion",
+      "celery",
+      "water"
+    ],
+    "utensils": [
+      "pot",
+      "knife",
+      "cutting board",
+      "ladle"
+    ],
+    "servings": 4,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Caprese Salad",
+    "description": "A delicious caprese salad recipe.",
+    "steps": [
+      "Prepare the caprese salad according to your preference."
+    ],
+    "ingredients": [
+      "tomato",
+      "mozzarella",
+      "basil",
+      "olive oil"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Tofu Stir Fry",
+    "description": "A delicious tofu stir fry recipe.",
+    "steps": [
+      "Prepare the tofu stir fry according to your preference."
+    ],
+    "ingredients": [
+      "tofu",
+      "broccoli",
+      "carrot",
+      "soy sauce"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Classic BLT",
+    "description": "A delicious classic blt recipe.",
+    "steps": [
+      "Prepare the classic blt according to your preference."
+    ],
+    "ingredients": [
+      "bread",
+      "bacon",
+      "lettuce",
+      "tomato"
+    ],
+    "utensils": [
+      "frying pan",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Vegetable Curry",
+    "description": "A delicious vegetable curry recipe.",
+    "steps": [
+      "Prepare the vegetable curry according to your preference."
+    ],
+    "ingredients": [
+      "potato",
+      "carrot",
+      "peas",
+      "curry powder",
+      "coconut milk"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Eggplant Parmesan",
+    "description": "A delicious eggplant parmesan recipe.",
+    "steps": [
+      "Prepare the eggplant parmesan according to your preference."
+    ],
+    "ingredients": [
+      "eggplant",
+      "tomato sauce",
+      "mozzarella",
+      "parmesan"
+    ],
+    "utensils": [
+      "baking tray",
+      "oven",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Falafel Wrap",
+    "description": "A delicious falafel wrap recipe.",
+    "steps": [
+      "Prepare the falafel wrap according to your preference."
+    ],
+    "ingredients": [
+      "falafel",
+      "tortilla",
+      "lettuce",
+      "tomato",
+      "yogurt"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Mushroom Risotto",
+    "description": "A delicious mushroom risotto recipe.",
+    "steps": [
+      "Prepare the mushroom risotto according to your preference."
+    ],
+    "ingredients": [
+      "rice",
+      "mushroom",
+      "onion",
+      "parmesan",
+      "butter"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Chicken Caesar Salad",
+    "description": "A delicious chicken caesar salad recipe.",
+    "steps": [
+      "Prepare the chicken caesar salad according to your preference."
+    ],
+    "ingredients": [
+      "chicken breast",
+      "lettuce",
+      "parmesan",
+      "croutons",
+      "caesar dressing"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Tomato Soup",
+    "description": "A delicious tomato soup recipe.",
+    "steps": [
+      "Prepare the tomato soup according to your preference."
+    ],
+    "ingredients": [
+      "tomato",
+      "onion",
+      "garlic",
+      "water"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Tuna Sandwich",
+    "description": "A delicious tuna sandwich recipe.",
+    "steps": [
+      "Prepare the tuna sandwich according to your preference."
+    ],
+    "ingredients": [
+      "bread",
+      "tuna",
+      "mayonnaise",
+      "lettuce"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Vegetable Stir Fry",
+    "description": "A delicious vegetable stir fry recipe.",
+    "steps": [
+      "Prepare the vegetable stir fry according to your preference."
+    ],
+    "ingredients": [
+      "broccoli",
+      "carrot",
+      "bell pepper",
+      "soy sauce"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Quiche Lorraine",
+    "description": "A delicious quiche lorraine recipe.",
+    "steps": [
+      "Prepare the quiche lorraine according to your preference."
+    ],
+    "ingredients": [
+      "pie crust",
+      "eggs",
+      "bacon",
+      "cheese",
+      "milk"
+    ],
+    "utensils": [
+      "baking tray",
+      "oven",
+      "bowl",
+      "whisk"
+    ],
+    "servings": 4,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Minestrone Soup",
+    "description": "A delicious minestrone soup recipe.",
+    "steps": [
+      "Prepare the minestrone soup according to your preference."
+    ],
+    "ingredients": [
+      "carrot",
+      "celery",
+      "onion",
+      "tomato",
+      "pasta",
+      "beans",
+      "water"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 4,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Avocado Toast",
+    "description": "A delicious avocado toast recipe.",
+    "steps": [
+      "Prepare the avocado toast according to your preference."
+    ],
+    "ingredients": [
+      "bread",
+      "avocado",
+      "lemon juice"
+    ],
+    "utensils": [
+      "knife",
+      "cutting board",
+      "bowl"
+    ],
+    "servings": 1,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Peanut Butter Banana Sandwich",
+    "description": "A delicious peanut butter banana sandwich recipe.",
+    "steps": [
+      "Prepare the peanut butter banana sandwich according to your preference."
+    ],
+    "ingredients": [
+      "bread",
+      "peanut butter",
+      "banana"
+    ],
+    "utensils": [
+      "knife",
+      "cutting board",
+      "bowl"
+    ],
+    "servings": 1,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Vegetable Quesadilla",
+    "description": "A delicious vegetable quesadilla recipe.",
+    "steps": [
+      "Prepare the vegetable quesadilla according to your preference."
+    ],
+    "ingredients": [
+      "tortilla",
+      "cheese",
+      "bell pepper",
+      "onion"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Chickpea Stew",
+    "description": "A delicious chickpea stew recipe.",
+    "steps": [
+      "Prepare the chickpea stew according to your preference."
+    ],
+    "ingredients": [
+      "chickpeas",
+      "tomato",
+      "onion",
+      "carrot",
+      "spices"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Egg Drop Soup",
+    "description": "A delicious egg drop soup recipe.",
+    "steps": [
+      "Prepare the egg drop soup according to your preference."
+    ],
+    "ingredients": [
+      "eggs",
+      "chicken broth",
+      "cornstarch",
+      "spring onion"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "bowl",
+      "whisk"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Sweet Potato Fries",
+    "description": "A delicious sweet potato fries recipe.",
+    "steps": [
+      "Prepare the sweet potato fries according to your preference."
+    ],
+    "ingredients": [
+      "sweet potato",
+      "oil",
+      "salt"
+    ],
+    "utensils": [
+      "baking tray",
+      "oven",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Spinach Frittata",
+    "description": "A delicious spinach frittata recipe.",
+    "steps": [
+      "Prepare the spinach frittata according to your preference."
+    ],
+    "ingredients": [
+      "eggs",
+      "spinach",
+      "cheese",
+      "milk"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "bowl",
+      "whisk"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Couscous Salad",
+    "description": "A delicious couscous salad recipe.",
+    "steps": [
+      "Prepare the couscous salad according to your preference."
+    ],
+    "ingredients": [
+      "couscous",
+      "cucumber",
+      "tomato",
+      "olive oil"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Turkey Wrap",
+    "description": "A delicious turkey wrap recipe.",
+    "steps": [
+      "Prepare the turkey wrap according to your preference."
+    ],
+    "ingredients": [
+      "tortilla",
+      "turkey",
+      "lettuce",
+      "cheese"
+    ],
+    "utensils": [
+      "bowl",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Pumpkin Soup",
+    "description": "A delicious pumpkin soup recipe.",
+    "steps": [
+      "Prepare the pumpkin soup according to your preference."
+    ],
+    "ingredients": [
+      "pumpkin",
+      "onion",
+      "carrot",
+      "water"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Salmon Teriyaki",
+    "description": "A delicious salmon teriyaki recipe.",
+    "steps": [
+      "Prepare the salmon teriyaki according to your preference."
+    ],
+    "ingredients": [
+      "salmon fillet",
+      "soy sauce",
+      "rice",
+      "broccoli"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "bowl"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Potato Gratin",
+    "description": "A delicious potato gratin recipe.",
+    "steps": [
+      "Prepare the potato gratin according to your preference."
+    ],
+    "ingredients": [
+      "potato",
+      "cheese",
+      "milk",
+      "butter"
+    ],
+    "utensils": [
+      "baking tray",
+      "oven",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Stuffed Peppers",
+    "description": "A delicious stuffed peppers recipe.",
+    "steps": [
+      "Prepare the stuffed peppers according to your preference."
+    ],
+    "ingredients": [
+      "bell pepper",
+      "rice",
+      "ground beef",
+      "tomato sauce"
+    ],
+    "utensils": [
+      "baking tray",
+      "oven",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Pasta Primavera",
+    "description": "A delicious pasta primavera recipe.",
+    "steps": [
+      "Prepare the pasta primavera according to your preference."
+    ],
+    "ingredients": [
+      "pasta",
+      "zucchini",
+      "carrot",
+      "peas"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "French Toast",
+    "description": "A delicious french toast recipe.",
+    "steps": [
+      "Prepare the french toast according to your preference."
+    ],
+    "ingredients": [
+      "bread",
+      "eggs",
+      "milk",
+      "sugar"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "bowl",
+      "whisk"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Vegetable Paella",
+    "description": "A delicious vegetable paella recipe.",
+    "steps": [
+      "Prepare the vegetable paella according to your preference."
+    ],
+    "ingredients": [
+      "rice",
+      "peas",
+      "bell pepper",
+      "tomato",
+      "saffron"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 3,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Chicken Fajitas",
+    "description": "A delicious chicken fajitas recipe.",
+    "steps": [
+      "Prepare the chicken fajitas according to your preference."
+    ],
+    "ingredients": [
+      "chicken breast",
+      "tortilla",
+      "bell pepper",
+      "onion"
+    ],
+    "utensils": [
+      "frying pan",
+      "spatula",
+      "knife",
+      "cutting board"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  },
+  {
+    "title": "Miso Soup",
+    "description": "A delicious miso soup recipe.",
+    "steps": [
+      "Prepare the miso soup according to your preference."
+    ],
+    "ingredients": [
+      "miso paste",
+      "tofu",
+      "spring onion",
+      "water"
+    ],
+    "utensils": [
+      "pot",
+      "spoon",
+      "bowl"
+    ],
+    "servings": 2,
+    "if_then_rules": [],
+    "actions": [
+      "prepare",
+      "cook",
+      "serve"
+    ],
+    "contradictions": []
+  }
+]

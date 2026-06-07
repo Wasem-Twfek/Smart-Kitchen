@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.name }} - Smart Kitchen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <style>
+        .recipe-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .recipe-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .info-box {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: #f8f9fa;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-box i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 0.75rem;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .info-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .info-content p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .ingredient-list, .utensil-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .ingredient-list li, .utensil-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #e9ecef;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ingredient-list li:before, .utensil-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1rem 1rem 3rem;
+            position: relative;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .steps-list li:before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .section-heading i {
+            color: var(--primary);
+            margin-right: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="toast-container">
+        <div id="toast" class="toast" role="status" aria-live="polite" style="display: none;"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <h1><i class="fa fa-utensils"></i> Smart Kitchen</h1>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('index') }}" aria-label="Home"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="{{ url_for('inventory') }}" aria-label="Inventory"><i class="fa fa-box"></i> Inventory</a></li>
+                    <li><a href="{{ url_for('recipes') }}" class="active" aria-label="Recipes"><i class="fa fa-book"></i> Recipes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card my-4">
+            <a href="{{ url_for('recipes') }}" class="btn btn-outline btn-sm my-2">
+                <i class="fa fa-arrow-left"></i> Back to Recipes
+            </a>
+            
+            <div class="recipe-header">
+                <h2>{{ recipe.name }}</h2>
+                {% if recipe.tags %}
+                    <div>
+                        {% for tag in recipe.tags %}
+                            <span class="tag tag-{{ tag }}">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="{{ url_for('static', filename='images/recipes/' + recipe.image) if recipe.image else url_for('static', filename='images/recipe-placeholder.jpg') }}" 
+                         alt="{{ recipe.name }}" class="img-fluid rounded" style="width: 100%; max-height: 350px; object-fit: cover;">
+                    
+                    <div class="d-flex justify-content-between my-3">
+                        <button class="btn btn-primary" onclick="startCookMode()">
+                            <i class="fa fa-utensils"></i> Start Cooking
+                        </button>
+                        
+                        <button class="btn btn-outline" onclick="checkIngredients()">
+                            <i class="fa fa-check-circle"></i> Check Ingredients
+                        </button>
+                    </div>
+                    
+                    {% if recipe.description %}
+                        <div class="card p-3 my-3">
+                            {{ recipe.description }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="fa fa-clock"></i>
+                                <div class="info-content">
+                                    <h3>Preparation</h3>
+                                    <p>{{ recipe.prep_time if recipe.prep_time else "30 minutes" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="fa fa-utensils"></i>
+                                <div class="info-content">
+                                    <h3>Servings</h3>
+                                    <p>{{ recipe.servings if recipe.servings else "4 servings" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section-heading">
+                        <i class="fa fa-list"></i>
+                        <h3>Ingredients</h3>
+                    </div>
+                    <ul class="ingredient-list">
+                        {% for ingredient in recipe.ingredients %}
+                            <li>{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</li>
+                        {% endfor %}
+                    </ul>
+                    
+                    <div class="section-heading">
+                        <i class="fa fa-tools"></i>
+                        <h3>Utensils Required</h3>
+                    </div>
+                    <ul class="utensil-list">
+                        {% for utensil in recipe.utensils %}
+                            <li>{{ utensil }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section-heading">
+                <i class="fa fa-list-ol"></i>
+                <h3>Cooking Steps</h3>
+            </div>
+            <ol class="steps-list">
+                {% for step in recipe.steps %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+            
+            {% if recipe.if_then_rules %}
+                <div class="card bg-light p-3 my-3">
+                    <div class="section-heading">
+                        <i class="fa fa-code-branch"></i>
+                        <h3>Cooking Variations</h3>
+                    </div>
+                    <ul class="ingredient-list">
+                        {% for rule in recipe.if_then_rules %}
+                            <li><strong>If</strong> {{ rule.if }}, <strong>then</strong> {{ rule.then }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            
+            {% if recipe.notes %}
+                <div class="card bg-light p-3 my-3">
+                    <div class="section-heading">
+                        <i class="fa fa-sticky-note"></i>
+                        <h3>Notes</h3>
+                    </div>
+                    <p>{{ recipe.notes }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Cook Mode Modal -->
+    <div class="cook-mode" id="cookModeModal" style="display: none;">
+        <div class="cook-mode-content">
+            <button class="close-btn" onclick="closeCookMode()">×</button>
+            
+            <h2><i class="fa fa-utensils"></i> Cooking: {{ recipe.name }}</h2>
+            
+            <div id="stepContent" class="my-4">
+                <h3>Step <span id="stepNumber">1</span> of {{ recipe.steps|length }}</h3>
+                <p id="currentStep" class="cook-step">{{ recipe.steps[0] }}</p>
+            </div>
+            
+            <div class="cook-nav">
+                <button id="prevStepBtn" class="btn btn-outline" onclick="prevStep()" disabled>
+                    <i class="fa fa-arrow-left"></i> Previous Step
+                </button>
+                <button id="nextStepBtn" class="btn btn-primary" onclick="nextStep()">
+                    Next Step <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentStepIndex = 0;
+        const totalSteps = {{ recipe.steps|length }};
+        
+        function startCookMode() {
+            document.getElementById('cookModeModal').style.display = 'flex';
+            currentStepIndex = 0;
+            updateStepDisplay();
+        }
+        
+        function closeCookMode() {
+            document.getElementById('cookModeModal').style.display = 'none';
+        }
+        
+        function nextStep() {
+            if (currentStepIndex < totalSteps - 1) {
+                currentStepIndex++;
+                updateStepDisplay();
+            }
+        }
+        
+        function prevStep() {
+            if (currentStepIndex > 0) {
+                currentStepIndex--;
+                updateStepDisplay();
+            }
+        }
+        
+        function updateStepDisplay() {
+            document.getElementById('stepNumber').textContent = currentStepIndex + 1;
+            document.getElementById('currentStep').textContent = {{ recipe.steps|tojson }}[currentStepIndex];
+            
+            // Update buttons
+            document.getElementById('prevStepBtn').disabled = currentStepIndex === 0;
+            document.getElementById('nextStepBtn').disabled = currentStepIndex === totalSteps - 1;
+            
+            if (currentStepIndex === totalSteps - 1) {
+                document.getElementById('nextStepBtn').textContent = 'Finish';
+            } else {
+                document.getElementById('nextStepBtn').innerHTML = 'Next Step <i class="fa fa-arrow-right"></i>';
+            }
+        }
+        
+        function checkIngredients() {
+            // In a real app, this would check the inventory
+            fetch('/check_ingredients/{{ recipe.id }}')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        let message = "";
+                        if (data.missing.length === 0) {
+                            message = "You have all ingredients for this recipe!";
+                            showToast(message, 'success');
+                        } else {
+                            message = `Missing ingredients: ${data.missing.join(', ')}`;
+                            showToast(message, 'warning');
+                        }
+                    } else {
+                        showToast("Could not check ingredients", 'error');
+                    }
+                });
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,31 @@
+{
+  "fridge_1": [
+    {"name": "milk", "quantity": 1, "unit": "liter", "perishable": true, "expiry_date": "2025-06-30"},
+    {"name": "eggs", "quantity": 6, "unit": "pcs", "perishable": true, "expiry_date": "2025-06-15"},
+    {"name": "cheese", "quantity": 200, "unit": "grams", "perishable": true, "expiry_date": "2025-06-20"},
+    {"name": "ketchup", "quantity": 1, "unit": "bottle", "perishable": false},
+    {"name": "rice", "quantity": 1, "unit": "kg", "perishable": false}
+  ],
+  "fridge_2": [
+    {"name": "chicken breast", "quantity": 2, "unit": "pcs", "perishable": true, "expiry_date": "2025-05-25"},
+    {"name": "lettuce", "quantity": 1, "unit": "head", "perishable": true, "expiry_date": "2025-05-18"},
+    {"name": "tomato", "quantity": 3, "unit": "pcs", "perishable": true, "expiry_date": "2025-05-20"},
+    {"name": "pasta", "quantity": 500, "unit": "grams", "perishable": false},
+    {"name": "olive oil", "quantity": 1, "unit": "bottle", "perishable": false}
+  ],
+  "fridge_3": [
+    {"name": "tofu", "quantity": 2, "unit": "blocks", "perishable": true, "expiry_date": "2025-05-28"},
+    {"name": "spinach", "quantity": 200, "unit": "grams", "perishable": true, "expiry_date": "2025-05-17"},
+    {"name": "carrot", "quantity": 5, "unit": "pcs", "perishable": true, "expiry_date": "2025-06-10"},
+    {"name": "avocado", "quantity": 2, "unit": "pcs", "perishable": true, "expiry_date": "2025-05-22"},
+    {"name": "quinoa", "quantity": 500, "unit": "grams", "perishable": false},
+    {"name": "chickpeas", "quantity": 2, "unit": "cans", "perishable": false},
+    {"name": "bread", "quantity": 1, "unit": "loaf", "perishable": true, "expiry_date": "2025-05-19"},
+    {"name": "bacon", "quantity": 8, "unit": "slices", "perishable": true, "expiry_date": "2025-06-01"},
+    {"name": "feta cheese", "quantity": 150, "unit": "grams", "perishable": true, "expiry_date": "2025-06-15"},
+    {"name": "tuna", "quantity": 2, "unit": "cans", "perishable": false},
+    {"name": "pumpkin", "quantity": 1, "unit": "pcs", "perishable": true, "expiry_date": "2025-06-20"},
+    {"name": "salmon fillet", "quantity": 2, "unit": "pcs", "perishable": true, "expiry_date": "2025-05-16"},
+    {"name": "miso paste", "quantity": 100, "unit": "grams", "perishable": false}
+  ]
+} 

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management - Smart Kitchen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <div class="toast-container">
+        <div id="toast" class="toast" role="status" aria-live="polite" style="display: none;"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <h1><i class="fa fa-utensils"></i> Smart Kitchen</h1>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('index') }}" aria-label="Home"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="{{ url_for('inventory') }}" class="active" aria-label="Inventory"><i class="fa fa-box"></i> Inventory</a></li>
+                    <li><a href="{{ url_for('recipes') }}" aria-label="Recipes"><i class="fa fa-book"></i> Recipes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <h2><i class="fa fa-snowflake"></i> Fridges</h2>
+                    <div class="filters my-3">
+                        <form class="filter-form">
+                            <select id="fridge-select" class="form-control">
+                                {% for fridge in fridges %}
+                                <option value="{{ fridge.id }}">{{ fridge.id }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2><i class="fa fa-cube"></i> Inventory Items</h2>
+                        <button class="btn btn-primary btn-sm" onclick="showModal()">
+                            <i class="fa fa-plus"></i> Add Item
+                        </button>
+                    </div>
+                    
+                    <div id="inventory-list" class="my-3">
+                        {% for fridge in fridges %}
+                            <div class="fridge-items" id="fridge-{{ fridge.id }}">
+                                {% for item in fridge.inventory %}
+                                    <div class="inventory-item">
+                                        <div>
+                                            <strong>{{ item.name }}</strong>
+                                            <span>{{ item.quantity }} {{ item.unit }}</span>
+                                            {% if item.expiry_date %}
+                                                <span class="{% if item.is_expired %}text-danger{% endif %}">
+                                                    Expires: {{ item.expiry_date }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="inventory-actions">
+                                            <button class="btn btn-sm btn-outline" onclick="updateItem('{{ fridge.id }}', '{{ item.name }}', 'consume')">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline" onclick="updateItem('{{ fridge.id }}', '{{ item.name }}', 'restock')">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-accent" onclick="deleteItem('{{ fridge.id }}', '{{ item.name }}')">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div class="modal" id="addItemModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Item</h3>
+                    <button type="button" class="close-btn" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="addItemForm" action="{{ url_for('add_item') }}" method="post">
+                        <div class="form-group">
+                            <label for="fridge_id" class="form-label">Fridge</label>
+                            <select id="fridge_id" name="fridge_id" class="form-control" required>
+                                {% for fridge in fridges %}
+                                <option value="{{ fridge.id }}">{{ fridge.id }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_name" class="form-label">Item Name</label>
+                            <input type="text" id="item_name" name="item_name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control" min="0.1" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="unit" class="form-label">Unit</label>
+                            <input type="text" id="unit" name="unit" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiry_date" class="form-label">Expiry Date (optional)</label>
+                            <input type="date" id="expiry_date" name="expiry_date" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">Add Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show the selected fridge's inventory
+            const fridgeSelect = document.getElementById('fridge-select');
+            const fridgeItems = document.querySelectorAll('.fridge-items');
+            
+            function showSelectedFridge() {
+                const selectedFridge = fridgeSelect.value;
+                fridgeItems.forEach(item => {
+                    if (item.id === 'fridge-' + selectedFridge) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            fridgeSelect.addEventListener('change', showSelectedFridge);
+            showSelectedFridge(); // Show initial fridge
+        });
+        
+        function updateItem(fridgeId, itemName, action) {
+            fetch('/update_item', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fridge_id: fridgeId,
+                    item_name: itemName,
+                    action: action
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    setTimeout(() => location.reload(), 1500);
+                } else {
+                    showToast(data.message, 'error');
+                }
+            });
+        }
+        
+        function deleteItem(fridgeId, itemName) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                fetch('/delete_item', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fridge_id: fridgeId,
+                        item_name: itemName
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast(data.message, 'success');
+                        setTimeout(() => location.reload(), 1500);
+                    } else {
+                        showToast(data.message, 'error');
+                    }
+                });
+            }
+        }
+        
+        function showModal() {
+            document.getElementById('addItemModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('addItemModal').style.display = 'none';
+        }
+        
+        function submitForm() {
+            document.getElementById('addItemForm').submit();
+        }
+    </script>
+</body>
+</html> 

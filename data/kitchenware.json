@@ -1,0 +1,62 @@
+[
+  {
+    "name": "frying pan",
+    "type": "cookware"
+  },
+  {
+    "name": "pot",
+    "type": "cookware"
+  },
+  {
+    "name": "baking dish",
+    "type": "cookware"
+  },
+  {
+    "name": "mixing bowl",
+    "type": "utensil"
+  },
+  {
+    "name": "cutting board",
+    "type": "utensil"
+  },
+  {
+    "name": "knife",
+    "type": "utensil"
+  },
+  {
+    "name": "wooden spoon",
+    "type": "utensil"
+  },
+  {
+    "name": "whisk",
+    "type": "utensil"
+  },
+  {
+    "name": "spatula",
+    "type": "utensil"
+  },
+  {
+    "name": "measuring cups",
+    "type": "utensil"
+  },
+  {
+    "name": "measuring spoons",
+    "type": "utensil"
+  },
+  {
+    "name": "blender",
+    "type": "appliance"
+  },
+  {
+    "name": "food processor",
+    "type": "appliance"
+  },
+  {
+    "name": "oven",
+    "type": "appliance"
+  },
+  {
+    "name": "stove",
+    "type": "appliance"
+  }
+] 
