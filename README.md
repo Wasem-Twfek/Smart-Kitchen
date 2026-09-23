@@ -1,151 +1,168 @@
-Smart Kitchen Meal Planner: Планировщик Питания
+# Smart Kitchen
 
-Обзор
-Комплексная интеллектуальная система планирования питания и управления запасами, разработанная для студенческих общежитий. Smart Kitchen Meal Planner рекомендует блюда на основе:
-- Количества порций (людей)
-- Наличия и количества ингредиентов (с отслеживанием срока годности)
-- Наличия кухонной утвари и посуды
-- Подключения нескольких холодильников
-- Автоматического заказа недостающих продуктов
-- Извлечения правил из рецептов с помощью NLP (из неструктурированного текста)
-- Управления запасами в реальном времени
+Smart Kitchen is an intelligent meal-planning and inventory-management prototype designed around shared kitchens and student-dorm environments.
 
----
+The system combines rule-based planning, NLP-based recipe processing, inventory tracking, and a Flask web interface with real-time updates.
 
-Технологический стек
-- Язык программирования: Python 3.10+
-- База данных: SQLite (с поддержкой JSON)
-- NLP: spaCy 3.8.5 с моделью en_core_web_sm
-- Интерфейс: CLI с colorama и веб-приложение на Flask с SocketIO для обновлений в реальном времени
-- Данные: JSON-файлы для холодильников, посуды и структурированных рецептов
-- Фронтенд: HTML, CSS, JavaScript с адаптивным дизайном
+## What it demonstrates
 
----
+- Multi-fridge inventory management
+- Ingredient quantity and expiration tracking
+- Recipe recommendations based on available ingredients, kitchenware, and serving count
+- Shopping-list generation for missing ingredients
+- NLP preprocessing and rule extraction from unstructured recipes
+- Real-time inventory updates through Flask-SocketIO
+- Both CLI and web application workflows
 
-Возможности
-- Управление запасами: Отслеживание и управление продуктами в нескольких холодильниках с контролем срока годности
-- Система рекомендации блюд: Предлагает оптимальные рецепты на основе доступных ингредиентов, посуды и количества порций
-- Генератор списка покупок: Создает списки недостающих ингредиентов, которые можно сохранить или распечатать
-- Проверка посуды: Проверяет необходимую посуду для рецептов в соответствии с доступной кухонной утварью
-- Обработка рецептов с помощью NLP: Извлекает структурированные данные, включая правила ЕСЛИ-ТО, шаги, ингредиенты и действия из неструктурированных рецептов
-- Веб-интерфейс: Современное адаптивное веб-приложение на Flask с обновлениями в реальном времени через SocketIO
-- Детали рецепта: Просмотр полной информации о рецепте, включая шаги, правила и потенциальные противоречия
+## Architecture
 
----
+```text
+                    ┌────────────────────┐
+                    │   Recipe / Fridge  │
+                    │      JSON data     │
+                    └─────────┬──────────┘
+                              │
+             ┌────────────────▼────────────────┐
+             │        Planning engine          │
+             │ ingredient + serving + tooling  │
+             │             rules                │
+             └──────────────┬─────────────────┘
+                            │
+              ┌─────────────▼─────────────┐
+              │       Recommendations      │
+              │  recipes + missing items   │
+              └─────────────┬─────────────┘
+                            │
+                 ┌──────────▼──────────┐
+                 │ Flask / SocketIO UI │
+                 │      + SQLite       │
+                 └─────────────────────┘
 
-Структура проекта
-```
-smart_kitchen/
-  backend/
-    db.py             # Операции с базой данных и интеграция с SQLite
-    fridge.py         # Управление запасами в холодильнике
-    order.py          # Генерация списка покупок
-    planner.py        # Движок рекомендаций рецептов
-  data/
-    cleaned_recipes.txt         # Предобработанный текст рецептов
-    fridges.json               # Данные о запасах в холодильниках
-    kitchenware.json           # Доступная кухонная утварь
-    raw_recipes.txt            # Оригинальные неструктурированные рецепты
-    structured_recipes.json    # Обработанные данные рецептов с извлечением NLP
-  nlp/
-    clean_text.py              # Предобработка текста рецептов
-    rule_extractor.py          # Извлечение компонентов рецептов с помощью NLP
-  static/                      # Веб-ресурсы (CSS, JS)
-  templates/                   # HTML-шаблоны Flask
-    index.html                 # Главная веб-страница
-    inventory.html             # Страница управления запасами
-    recipe_details.html        # Детальный просмотр рецепта
-    recipes.html               # Просмотр списка рецептов
-  main.py                      # Точка входа в приложение (CLI и веб)
-  kitchen.db                   # База данных SQLite
-  requirements.txt             # Зависимости проекта
-  README.md                    # Документация по проекту
+NLP pipeline:
+raw recipes → text cleaning → rule extraction → structured recipes
 ```
 
----
+## Tech stack
 
-Инструкция по установке
+- Python 3.10+
+- Flask
+- Flask-SocketIO
+- SQLite
+- spaCy
+- HTML / CSS / JavaScript
+- JSON-based domain data
 
-1. Клонируйте репозиторий
-```
-git clone <ваш-репозиторий>
-cd smart_kitchen
+## Project structure
+
+```text
+Smart-Kitchen/
+├── backend/              # Inventory, planning, and ordering logic
+├── data/                 # Fridges, kitchenware, and recipe datasets
+├── docs/                 # Supporting project documentation
+├── nlp/                  # Recipe preprocessing and rule extraction
+├── static/               # Frontend assets
+├── templates/            # Flask templates
+├── main.py               # CLI and web entry point
+└── requirements.txt      # Python dependencies
 ```
 
-2. Создайте и активируйте виртуальное окружение Python
-```
-python -m venv venv
-venv\Scripts\activate  # Для Windows
-# или
-source venv/bin/activate  # Для Mac/Linux
+## Getting started
+
+### Prerequisites
+
+- Python 3.10+
+- pip
+- A virtual environment is recommended
+
+### 1. Create a virtual environment
+
+Windows:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 ```
 
-3. Установите зависимости
+macOS / Linux:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
 ```
+
+### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-4. Подготовьте данные
-- При необходимости отредактируйте или добавьте данные в файлы `data/fridges.json`, `data/kitchenware.json` и `data/raw_recipes.txt`.
+### 3. Prepare the data
 
-5. Запустите NLP-обработку (если изменили рецепты)
-```
+The project uses files in `data/` for fridge inventories, available kitchenware, and recipe content.
+
+When recipe source data changes, regenerate the NLP-derived data:
+
+```bash
 python nlp/clean_text.py
 python nlp/rule_extractor.py
 ```
 
-6. (Опционально) Перенесите данные в SQLite
-```
-python backend/db.py migrate
-```
+### 4. Run the CLI
 
----
-
-Использование
-
-Интерфейс командной строки
-```
+```bash
 python main.py
 ```
-- Следуйте интерактивным подсказкам для:
-  - Выбора холодильников для планирования питания
-  - Ввода количества порций
-  - Просмотра рекомендуемых рецептов на основе доступных ингредиентов
-  - Просмотра недостающих ингредиентов и посуды
-  - Генерации и сохранения списков покупок
-  - Просмотра подробных инструкций и правил рецепта
 
-7. Запустите веб-приложение
+### 5. Run the web application
+
+```bash
 python main.py web
+```
 
-8. Откройте в браузере
-Перейдите по адресу [http://localhost:5000](http://localhost:5000)/) в вашем браузере
-- Функции включают:
-  - Интерактивный выбор холодильника
-  - Управление запасами в реальном времени
-  - Рекомендации рецептов с подробным просмотром
-  - Генерация списка покупок
-  - Просмотр и фильтрация рецептов
+Then open:
 
----
+```text
+http://localhost:5000
+```
 
-Расширение системы
-- Добавление новых рецептов: Добавьте в `data/raw_recipes.txt` и запустите NLP-конвейер
-- Добавление новых холодильников: Измените `data/fridges.json` с новыми конфигурациями холодильников
-- Добавление кухонной утвари: Обновите `data/kitchenware.json` с дополнительной посудой
-- Настройка правил: Измените извлечение правил в `nlp/rule_extractor.py`
+## Core workflow
 
----
+A typical planning request combines:
 
-Благодарности
-- Создано с использованием Flask, spaCy и SQLite
-- NLP работает на базе [spaCy](https://spacy.io/)
-- Пользовательский интерфейс работает на [Flask](https://flask.palletsprojects.com/) и [SocketIO](https://socket.io/)
+1. selected fridge inventories;
+2. serving requirements;
+3. available kitchenware;
+4. recipe ingredients and extracted rules;
+5. ingredient freshness and quantities.
 
----
+The planner uses that information to identify suitable recipes and generate the missing-item list.
 
-Примечания
-- Система обнаруживает просроченные ингредиенты и исключает их из планирования питания
-- Веб-интерфейс обеспечивает обновления в реальном времени при изменении запасов
-- Противоречия в рецептах автоматически обнаруживаются и выделяются
-- Система модульная и разработана для легкого расширения новыми функциями 
+## NLP pipeline
+
+Recipe text can be processed into a more structured representation:
+
+```text
+Unstructured recipe
+        │
+        ▼
+Text cleaning
+        │
+        ▼
+Entity / pattern extraction
+        │
+        ▼
+Structured recipe + rules
+```
+
+This part of the project is intended as an applied NLP component rather than a general-purpose language understanding system.
+
+## Notes and limitations
+
+- The application is a prototype and is designed primarily for local demonstration.
+- SQLite is used for simplicity.
+- Inventory and recipe datasets are local project data rather than a production-scale data service.
+- The recommendation logic is rule-driven and can be extended with learned ranking or personalization in a future version.
+
+## License
+
+License information should be added here when the project license is finalized.
