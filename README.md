@@ -162,7 +162,3 @@ This part of the project is intended as an applied NLP component rather than a g
 - SQLite is used for simplicity.
 - Inventory and recipe datasets are local project data rather than a production-scale data service.
 - The recommendation logic is rule-driven and can be extended with learned ranking or personalization in a future version.
-
-## License
-
-License information should be added here when the project license is finalized.
