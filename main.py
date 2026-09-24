@@ -20,7 +20,8 @@ def load_structured_recipes(path: str):
         return []
 
 app = Flask(__name__)
-app.secret_key = 'smartkitchen-secret'  # Needed for flash messages
+# Use a stable environment-provided key when available; otherwise keep local demos ephemeral.
+app.secret_key = os.environ.get('FLASK_SECRET_KEY') or os.urandom(32)
 socketio = SocketIO(app)
 
 @app.route('/', methods=['GET', 'POST'])
