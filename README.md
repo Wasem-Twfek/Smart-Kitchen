@@ -119,6 +119,8 @@ python main.py
 python main.py web
 ```
 
+For a deployed instance, set `FLASK_SECRET_KEY` to a stable random value. When it is not set, the application generates an ephemeral key for local/demo use.
+
 Then open:
 
 ```text
